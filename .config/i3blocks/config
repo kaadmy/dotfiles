@@ -1,0 +1,58 @@
+
+#
+# File: ~/.config/i3blocks/config
+#
+
+# Global properties
+
+align=center
+command=i3blocks_custom
+interval=4
+markup=none
+separator=true
+separator_block_width=15
+
+# Pseudo tray icons
+[tray]
+instance=riot-desktop,riot-desktop,
+interval=1
+
+[tray]
+instance=discord,discord,
+interval=1
+
+[tray]
+instance=steam,steam,
+interval=1
+
+# WiFi
+[iface]
+instance=wlan0
+min_width=110
+
+# Ethernet
+[iface]
+instance=eth0
+label=ETH
+min_width=130
+
+# Battery indicator
+[battery]
+label=BAT
+min_width=65
+
+# Volume
+[volume]
+interval=1
+label=VOL
+min_width=65
+
+# Temperature
+[temperature]
+min_width=55
+
+# Date and time
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+min_width=145

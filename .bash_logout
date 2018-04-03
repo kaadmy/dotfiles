@@ -1,0 +1,4 @@
+
+#
+# File: ~/.bash_logout
+#

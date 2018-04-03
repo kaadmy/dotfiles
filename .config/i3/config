@@ -1,0 +1,141 @@
+
+#
+# File: ~/.config/i3/config
+#
+
+# "Super" key
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+#  is used in the bar {} block below.
+#font pango:DejaVu Sans Mono 8
+font pango:Mononoki 8
+#font pango:Droid Sans 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Window focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Window movement
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Toggle fullscreen
+bindsym $mod+f fullscreen
+
+# Change container layout between stacked/tabbed/toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between floating/tiled windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+bindsym $mod+d focus child
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 
+bindsym $mod+0 workspace 
+bindsym $mod+x workspace 
+bindsym $mod+z workspace 
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 
+bindsym $mod+Shift+0 move container to workspace 
+bindsym $mod+Shift+x move container to workspace 
+bindsym $mod+Shift+z move container to workspace 
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# i3bar+i3status
+bar {
+        status_command i3blocks
+	font pango:Mononoki, FontAwesome 8
+        tray_output none # Custom i3blocks "tray" anyway
+        colors {
+	       background #202020
+	       statusline #f0f0f0
+	       focused_workspace #70a080 #70a080 #303030
+	       active_workspace #70a080 #70a080 #303030
+	       inactive_workspace #202020 #202020 #707070
+	       urgent_workspace #d05050 #d05050 #f0f0f0
+	}
+}
+
+# Theming
+client.focused #70a080 #70a080 #202020 #70a080 #70a080
+client.unfocused #303030 #303030 #707070 #303030 #303030
+client.focused_inactive #303030 #303030 #707070 #303030 #303030
+client.urgent #d05050 #d05050 #f0f0f0 #d05050 #d05050
+
+# Mostly custom binds and scripts past this point
+
+# Wallpaper (or flat color)
+#exec --no-startup-id hsetroot -solid "#ff0000"
+exec --no-startup-id feh --bg-scale ~/files/images/wallpapers/minimal_gray_1.png
+
+# Logout
+bindsym $mod+Shift+l exec i3-msg exit
+
+# Lock screen
+bindsym $mod+l exec --no-startup-id sysopt lock
+
+# Suspend+lock
+bindsym $mod+Shift+s exec --no-startup-id sysopt suspend
+
+# Start program launcher
+bindsym $mod+Return exec --no-startup-id sysopt launcher
+
+# Start a terminal
+bindsym $mod+Shift+Return exec termite
+
+# Sound volume keys
+bindcode 121 exec --no-startup-id sysopt volume-mute
+bindcode 122 exec --no-startup-id sysopt volume-down
+bindcode 123 exec --no-startup-id sysopt volume-up
+
+# Backlight brightness
+bindcode 233 exec --no-startup-id sysopt brightness-up
+bindcode 232 exec --no-startup-id sysopt brightness-down
+
+# Screenshot
+bindcode 107 exec --no-startup-id sysopt scrot-fullscreen
+bindsym $mod+Shift+p exec --no-startup-id sysopt scrot-region
+bindsym $mod+Ctrl+p exec --no-startup-id sysopt scrot-window
