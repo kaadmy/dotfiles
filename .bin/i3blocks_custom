@@ -1,0 +1,126 @@
+#! /bin/env python3
+
+import netifaces
+import os
+import psutil
+import subprocess
+import sys
+
+# Globals
+
+BLOCK_NAME = os.environ.get("BLOCK_NAME")
+BLOCK_INSTANCE = os.environ.get("BLOCK_INSTANCE")
+BLOCK_BUTTON = os.environ.get("BLOCK_BUTTON")
+
+if BLOCK_BUTTON != None and BLOCK_BUTTON != "":
+    BLOCK_BUTTON = int(BLOCK_BUTTON)
+else:
+    BLOCK_BUTTON = 0
+
+MOUSE_LEFT = 1
+MOUSE_MIDDLE = 2
+MOUSE_RIGHT = 3
+
+# Output state
+
+full_text = ""
+short_text = ""
+color = None
+color_name = None # None, "regular", "good", "degraded", "bad", "urgent", "fail"
+
+# Helpers
+
+def fail():
+    full_text = "error"
+    color_name = "fail"
+
+# Block types
+
+if BLOCK_NAME == "temperature":
+    f = open("/sys/class/thermal/thermal_zone0/temp", "r")
+    temp = int(f.read()) / 1000
+    f.close()
+
+    full_text = str(temp) + "°C"
+
+    if temp > 100:
+        color_name="bad"
+    elif temp > 80:
+        color_name="degraded"
+
+elif BLOCK_NAME == "battery":
+    f = open("/sys/class/power_supply/BAT1/capacity", "r")
+    batt = int(f.read())
+    f.close()
+
+    full_text = str(batt) + "%"
+
+    if batt < 20:
+        color_name="bad"
+
+elif BLOCK_NAME == "volume":
+    o = subprocess.getoutput("pamixer --get-volume")
+
+    full_text = str(o) + "%"
+
+    if subprocess.getoutput("pamixer --get-mute") == "true":
+        full_text = "MUTE"
+
+elif BLOCK_NAME == "iface":
+    i = netifaces.ifaddresses(BLOCK_INSTANCE)
+
+    if netifaces.AF_INET in i:
+        full_text = i[netifaces.AF_INET][0]["addr"]
+        color_name = "good"
+
+elif BLOCK_NAME == "tray":
+    proc_name, proc_exe, proc_icon = BLOCK_INSTANCE.split(",")
+
+    found = []
+
+    for pid in psutil.pids():
+        process = psutil.Process(pid)
+
+        if process.name().lower()  == proc_name:
+            found.append(pid)
+
+    if len(found) > 0:
+        full_text = proc_icon
+
+    if BLOCK_BUTTON == MOUSE_LEFT:
+        subprocess.run([proc_exe])
+    elif BLOCK_BUTTON == MOUSE_RIGHT:
+        for pid in found:
+            process = psutil.Process(pid)
+
+            for child in process.children(recursive = True):
+                child.kill()
+
+            process.kill()
+
+        full_text = ""
+
+    color_name = "regular" # For some reason the default color is white for this block
+
+# Final output for i3blocks
+
+print(full_text)
+
+if short_text or color != None or color_name != None:
+    print(short_text)
+
+if color == None:
+    if color_name == "regular":
+        print("#c0c0c0")
+    elif color_name == "good":
+        print("#70a080")
+    elif color_name == "degraded":
+        print("#d5bd7c")
+    elif color_name == "bad":
+        print("#d05050")
+    elif color_name == "urgent":
+        sys.exit(33)
+    elif color_name == "fail":
+        print("#ff0000")
+else:
+    print(color)

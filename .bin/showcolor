@@ -1,0 +1,4 @@
+#! /usr/bin/env /bin/python3
+
+for x in range(128):
+    print("[%3d] \033[%dmHello, world! Testing escapes. int main(foo) { printf(\"Testing, 123!\\n\"); } \033[00m" % (x, x))

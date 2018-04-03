@@ -1,0 +1,79 @@
+#! /usr/bin/python3
+
+import os
+import sys
+import subprocess
+import time
+
+if len(sys.argv) < 2:
+    print("sysopt: no action given")
+    sys.exit(0)
+
+action = sys.argv[1]
+
+HOMEDIR = os.path.expanduser("~")
+DATESTAMP = time.strftime("%Y%m%d_%H%M%S")
+
+def sound_vol():
+    subprocess.run(["paplay", "/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"])
+
+def sound_scrot():
+    subprocess.run(["paplay", "/usr/share/sounds/freedesktop/stereo/camera-shutter.oga"])
+
+def lock():
+    subprocess.run(["i3lock", "-i", os.path.join(HOMEDIR, "files/images/wallpapers/minimal_gray_1_lock.png"),
+                    "-e", "--indicator", "--line-uses-inside", "--separatorcolor=00000000",
+                    "--insidecolor=00000000", "--insidevercolor=00000000", "--insidewrongcolor=00000000",
+                    "--ringcolor=303030ff", "--ringvercolor=00000000", "--ringwrongcolor=b03030ff",
+                    "--textcolor=c0c0c0ff", "--keyhlcolor=70a080ff", "--bshlcolor=70a080ff",
+                    "--veriftext=", "--wrongtext=", "--modsize", "15", "--radius", "70"])
+
+
+if action == "volume-mute":
+    subprocess.run(["pamixer", "-t"])
+    time.sleep(0.01)
+    sound_vol()
+
+elif action == "volume-down":
+    subprocess.run(["pamixer", "-d", "4"])
+    sound_vol()
+
+elif action == "volume-up":
+    subprocess.run(["pamixer", "-i", "4"])
+    sound_vol()
+
+elif action == "brightness-down":
+    brightness = int(subprocess.run(["xbacklight", "-get"], stdout=subprocess.PIPE).stdout)
+    brightness -= 5
+    brightness = max(brightness, 1)
+    subprocess.run(["xbacklight", "-set", str(brightness)])
+
+elif action == "brightness-up":
+    brightness = int(subprocess.run(["xbacklight", "-get"], stdout=subprocess.PIPE).stdout)
+    brightness += 5
+    brightness = min(brightness, 100)
+    subprocess.run(["xbacklight", "-set", str(brightness)])
+
+elif action == "scrot-window":
+    window = subprocess.getoutput("xdotool getactivewindow")
+    subprocess.run(["maim", "-u", "--window=" + window, os.path.join(HOMEDIR, ".scrot/scrot_window_" + DATESTAMP + ".png")])
+    sound_scrot()
+
+elif action == "scrot-region":
+    subprocess.run(["maim", "-u", "-s", os.path.join(HOMEDIR, ".scrot/scrot_region_" + DATESTAMP + ".png")])
+    sound_scrot()
+
+elif action == "scrot-fullscreen":
+    subprocess.run(["maim", os.path.join(HOMEDIR, ".scrot/scrot_fullscreen_" + DATESTAMP + ".png")])
+    sound_scrot()
+
+elif action == "launcher":
+    subprocess.run(["rofi", "-show", "run", "-theme", os.path.join(HOMEDIR, ".config/rofi/theme.rasi"), "-font", "Mononoki 9"])
+
+elif action == "lock":
+    lock()
+
+elif action == "suspend":
+    lock()
+
+    subprocess.run(["systemctl", "suspend", "-i"])
