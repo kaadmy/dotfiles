@@ -12,6 +12,7 @@ cursor_shape = block
 dynamic_title = true
 filter_unmatched_urls = true
 font = Mononoki 9
+geometry = 730x450
 mouse_autohide = false
 scroll_on_keystroke = true
 scroll_on_output = false

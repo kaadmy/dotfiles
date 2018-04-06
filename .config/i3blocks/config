@@ -25,6 +25,10 @@ interval=1
 instance=steam,steam,
 interval=1
 
+[tray]
+instance=plogger,plogger,
+interval=1
+
 # WiFi
 [iface]
 instance=wlan0

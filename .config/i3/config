@@ -59,8 +59,9 @@ bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 
+bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 
+bindsym $mod+c workspace 
 bindsym $mod+x workspace 
 bindsym $mod+z workspace 
 
@@ -73,13 +74,11 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 
+bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 
+bindsym $mod+Shift+c move container to workspace 
 bindsym $mod+Shift+x move container to workspace 
 bindsym $mod+Shift+z move container to workspace 
-
-# Reload the configuration file
-bindsym $mod+Shift+c reload
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -88,7 +87,7 @@ bindsym $mod+Shift+r restart
 bar {
         status_command i3blocks
 	font pango:Mononoki, FontAwesome 8
-        tray_output none # Custom i3blocks "tray" anyway
+        tray_output none
         colors {
 	       background #202020
 	       statusline #f0f0f0
@@ -108,8 +107,8 @@ client.urgent #d05050 #d05050 #f0f0f0 #d05050 #d05050
 # Mostly custom binds and scripts past this point
 
 # Wallpaper (or flat color)
-#exec --no-startup-id hsetroot -solid "#ff0000"
-exec --no-startup-id feh --bg-scale ~/files/images/wallpapers/minimal_gray_1.png
+#exec_always --no-startup-id hsetroot -solid "#ff0000"
+exec_always --no-startup-id feh --bg-scale ~/files/images/wallpapers/minimal_gray_1.png
 
 # Logout
 bindsym $mod+Shift+l exec i3-msg exit

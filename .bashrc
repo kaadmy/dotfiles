@@ -21,7 +21,7 @@ PATH=~/.bin:~/.local/bin:$PATH
 
 # Pkg config
 
-PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 # Misc. command aliases
 
