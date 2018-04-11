@@ -56,7 +56,6 @@ min_width=65
 min_width=55
 
 # Date and time
-[time]
-command=date '+%Y-%m-%d %H:%M:%S'
+[clock]
 interval=1
 min_width=145

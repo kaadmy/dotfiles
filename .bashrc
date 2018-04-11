@@ -15,6 +15,10 @@ PS1='\[\033[00;01m\][\[\033[01;30m\]\u\[\033[01;31m\] \w\[\033[00;01m\]]\[\033[0
 
 TERM="xterm-256color"
 
+# History limit
+
+export HISTSIZE=5000
+
 # Add new dirs to PATH
 
 PATH=~/.bin:~/.local/bin:$PATH

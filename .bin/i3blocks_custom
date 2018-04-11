@@ -5,6 +5,7 @@ import os
 import psutil
 import subprocess
 import sys
+import time
 
 # Globals
 
@@ -65,6 +66,9 @@ elif BLOCK_NAME == "volume":
 
     if subprocess.getoutput("pamixer --get-mute") == "true":
         full_text = "MUTE"
+
+elif BLOCK_NAME == "clock":
+    full_text = time.strftime("%Y-%m-%d %a %H:%M:%S")
 
 elif BLOCK_NAME == "iface":
     i = netifaces.ifaddresses(BLOCK_INSTANCE)
