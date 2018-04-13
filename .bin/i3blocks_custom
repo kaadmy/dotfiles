@@ -91,9 +91,7 @@ elif BLOCK_NAME == "tray":
     if len(found) > 0:
         full_text = proc_icon
 
-    if BLOCK_BUTTON == MOUSE_LEFT:
-        subprocess.run([proc_exe])
-    elif BLOCK_BUTTON == MOUSE_RIGHT:
+    if BLOCK_BUTTON == MOUSE_RIGHT:
         for pid in found:
             process = psutil.Process(pid)
 
