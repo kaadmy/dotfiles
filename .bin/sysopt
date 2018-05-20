@@ -25,7 +25,7 @@ def lock():
                     "-e", "--indicator", "--line-uses-inside", "--separatorcolor=00000000",
                     "--insidecolor=00000000", "--insidevercolor=00000000", "--insidewrongcolor=00000000",
                     "--ringcolor=303030ff", "--ringvercolor=00000000", "--ringwrongcolor=b03030ff",
-                    "--textcolor=c0c0c0ff", "--keyhlcolor=70a080ff", "--bshlcolor=70a080ff",
+                    "--keyhlcolor=70a080ff", "--bshlcolor=70a080ff",
                     "--veriftext=", "--wrongtext=", "--modsize", "15", "--radius", "70"])
 
 
