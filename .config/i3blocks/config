@@ -26,6 +26,10 @@ instance=steam,steam,
 interval=1
 
 [tray]
+instance=Steam.exe,Steam.exe,
+interval=1
+
+[tray]
 instance=plogger,plogger,
 interval=1
 
