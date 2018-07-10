@@ -15,23 +15,15 @@ separator_block_width=15
 # Pseudo tray icons
 [tray]
 instance=riot-desktop,riot-desktop,
-interval=1
+interval=2
 
 [tray]
 instance=discord,discord,
-interval=1
+interval=2
 
 [tray]
 instance=steam,steam,
-interval=1
-
-[tray]
-instance=Steam.exe,Steam.exe,
-interval=1
-
-[tray]
-instance=plogger,plogger,
-interval=1
+interval=2
 
 # WiFi
 [iface]

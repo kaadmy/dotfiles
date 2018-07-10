@@ -85,9 +85,9 @@ bindsym $mod+Shift+r restart
 
 # i3bar+i3status
 bar {
-        status_command i3blocks
+        status_command i3status
 	font pango:Mononoki, FontAwesome 8
-        tray_output none
+#        tray_output none
         colors {
 	       background #202020
 	       statusline #f0f0f0
