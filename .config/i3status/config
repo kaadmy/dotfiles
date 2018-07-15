@@ -1,0 +1,66 @@
+
+#
+# File: ~/.config/i3status/config
+#
+
+general {
+output_format = i3bar
+colors = true
+interval = 1
+color_good = "#70a080"
+color_degraded = "#d5bd7c"
+color_bad = "#d06060"
+}
+
+# Format
+
+order += "wireless wlan0"
+order += "ethernet eth0"
+order += "battery 0"
+order += "volume master"
+order += "cpu_temperature 0"
+order += "tztime local"
+
+# WiFi
+
+wireless wlan0 {
+format_up = "%ip"
+format_down = ""
+}
+
+# Ethernet
+
+ethernet eth0 {
+format_up = "E %ip"
+format_down = ""
+}
+
+# Media
+
+volume master {
+format = "♪ %volume"
+format_muted = "♪ %volume"
+device = "pulse"
+}
+
+# Battery
+
+battery 0 {
+last_full_capacity = true
+format = "BAT %percentage"
+format_down = ""
+path = "/sys/class/power_supply/BAT1/uevent"
+}
+
+# System
+
+cpu_temperature 0 {
+format = "%degrees°C"
+path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+# Time
+
+tztime local {
+format = "%Y-%m-%d %a %H:%M:%S"
+}
