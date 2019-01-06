@@ -23,6 +23,11 @@ export HISTSIZE=5000
 
 PATH=~/.bin:~/.local/bin:$PATH
 
+# Editor
+
+export VISUAL=nano
+export EDITOR="$VISUAL"
+
 # Pkg config
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig

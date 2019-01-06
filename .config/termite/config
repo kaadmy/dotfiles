@@ -6,7 +6,7 @@
 [options]
 allow_bold = true
 browser = xdg-open
-clickable_url = true
+clickable_url = false
 cursor_blink = on
 cursor_shape = block
 dynamic_title = true
@@ -20,9 +20,9 @@ scrollback_lines = 10000
 urgent_on_bell = true
 
 [colors]
-foreground = #c0c0c0
+foreground = #f0f0f0
 foreground_bold = #e0e0e0
-background = #202020
+background = #1a1a1a
 
 # Colors from color0 to color254 can be set
 
@@ -36,19 +36,19 @@ background = #202020
 # 7, 15 = white
 
 color0 = #303030
-color1 = #d07070
-color2 = #70a080
-color3 = #d5bd7c
-color4 = #82a9d2
-color5 = #de95c8
-color6 = #84d4c3
-color7 = #c0c0c0
+color1 = #ff5f5f
+color2 = #66da10
+color3 = #ffaf5f
+color4 = #82a9f2
+color5 = #d787d7
+color6 = #d787d7
+color7 = #f0f0f0
 
 color8 = #505050
-color9 = #d07070
-color10 = #70a080
-color11 = #d5bd7c
-color12 = #82a9d2
-color13 = #de95c8
-color14 = #84d4c3
+color9 = #ff7373
+color10 = #93e040
+color11 = #ffd75f
+color12 = #82a9f2
+color13 = #d7afd7
+color14 = #d787d7
 color15 = #e0e0e0
