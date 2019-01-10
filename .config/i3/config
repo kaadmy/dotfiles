@@ -109,6 +109,7 @@ client.urgent #d05050 #d05050 #f0f0f0 #d05050 #d05050
 # Wallpaper (or flat color)
 #exec_always --no-startup-id hsetroot -solid "#ff0000"
 exec_always --no-startup-id feh --bg-scale ~/files/images/wallpapers/minimal_gray_1.png
+#exec_always --no-startup-id feh --bg-scale ~/files/images/wallpapers/blugbox.jpg
 
 # Logout
 bindsym $mod+Shift+l exec i3-msg exit

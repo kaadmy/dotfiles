@@ -35,20 +35,20 @@ background = #1a1a1a
 # 6, 14 = cyan
 # 7, 15 = white
 
-color0 = #303030
+color0 = #606860
 color1 = #ff5f5f
-color2 = #66da10
+color2 = #76da30
 color3 = #ffaf5f
-color4 = #82a9f2
+color4 = #6299f2
 color5 = #d787d7
 color6 = #d787d7
 color7 = #f0f0f0
 
-color8 = #505050
+color8 = #808a80
 color9 = #ff7373
 color10 = #93e040
 color11 = #ffd75f
-color12 = #82a9f2
+color12 = #6299f2
 color13 = #d7afd7
 color14 = #d787d7
 color15 = #e0e0e0
