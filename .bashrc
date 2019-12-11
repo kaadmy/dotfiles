@@ -21,7 +21,7 @@ export HISTSIZE=5000
 
 # Add new dirs to PATH
 
-PATH=~/.bin:~/.local/bin:$PATH
+PATH=~/software/godot/latest/dev:~/.bin:~/.local/bin:$PATH
 
 # Editor
 
@@ -40,3 +40,13 @@ alias em='emacs -nw'
 # Dotfiles alias
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Emscripten
+
+PATH=~/software/emscripten/emsdk:$PATH
+PATH=~/software/emscripten/emsdk/fastcomp/emscripten:$PATH
+PATH=~/software/emscripten/emsdk/node/8.9.1_64bit/bin:$PATH
+
+EMSDK=~/software/emscripten/emsdk
+EM_CONFIG=~/.emscripten
+EMSDK_NODE=~/software/emscripten/emsdk/node/8.9.1_64bit/bin/node

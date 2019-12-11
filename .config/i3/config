@@ -63,7 +63,7 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 
 bindsym $mod+c workspace 
 bindsym $mod+x workspace 
-bindsym $mod+z workspace 
+bindsym $mod+z workspace 
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -78,7 +78,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 
 bindsym $mod+Shift+c move container to workspace 
 bindsym $mod+Shift+x move container to workspace 
-bindsym $mod+Shift+z move container to workspace 
+bindsym $mod+Shift+z move container to workspace 
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -104,6 +104,10 @@ client.unfocused #303030 #303030 #707070 #303030 #303030
 client.focused_inactive #303030 #303030 #707070 #303030 #303030
 client.urgent #d05050 #d05050 #f0f0f0 #d05050 #d05050
 
+# Focus/window rules
+
+no_focus [window_role="pop-up"]
+
 # Mostly custom binds and scripts past this point
 
 # Wallpaper (or flat color)
@@ -124,7 +128,7 @@ bindsym $mod+Shift+s exec --no-startup-id sysopt suspend
 bindsym $mod+Return exec --no-startup-id sysopt launcher
 
 # Start a terminal
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Shift+Return exec kitty
 
 # Sound volume keys
 bindcode 121 exec --no-startup-id sysopt volume-mute
