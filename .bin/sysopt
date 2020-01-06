@@ -56,16 +56,25 @@ elif action == "brightness-up":
 
 elif action == "scrot-window":
     window = subprocess.getoutput("xdotool getactivewindow")
-    subprocess.run(["maim", "-u", "--window=" + window, os.path.join(HOMEDIR, ".scrot/scrot_window_" + DATESTAMP + ".png")])
-    sound_scrot()
+    path = os.path.join(HOMEDIR, ".scrot/scrot_window_" + DATESTAMP + ".png")
+    val = subprocess.run(["maim", "-u", "--window=" + window, path])
+    if val.returncode == 0:
+        subprocess.run(["xclip", "-selection", "clipboard", "-t", "image/png", "-i", path])
+        sound_scrot()
 
 elif action == "scrot-region":
-    subprocess.run(["maim", "-u", "-s", os.path.join(HOMEDIR, ".scrot/scrot_region_" + DATESTAMP + ".png")])
-    sound_scrot()
+    path = os.path.join(HOMEDIR, ".scrot/scrot_region_" + DATESTAMP + ".png")
+    val = subprocess.run(["maim", "-u", "-s", path])
+    if val.returncode == 0:
+        subprocess.run(["xclip", "-selection", "clipboard", "-t", "image/png", "-i", path])
+        sound_scrot()
 
 elif action == "scrot-fullscreen":
-    subprocess.run(["maim", os.path.join(HOMEDIR, ".scrot/scrot_fullscreen_" + DATESTAMP + ".png")])
-    sound_scrot()
+    path = os.path.join(HOMEDIR, ".scrot/scrot_fullscreen_" + DATESTAMP + ".png")
+    val = subprocess.run(["maim", path])
+    if val.returncode == 0:
+        subprocess.run(["xclip", "-selection", "clipboard", "-t", "image/png", "-i", path])
+        sound_scrot()
 
 elif action == "launcher":
     subprocess.run(["rofi", "-show", "run", "-theme", os.path.join(HOMEDIR, ".config/rofi/theme.rasi"), "-font", "Mononoki 9"])
